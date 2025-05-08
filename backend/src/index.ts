@@ -1,17 +1,25 @@
-import express from 'express';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Liberação de CORS
+app.use(cors({
+  origin: "https://controle-ponto-frontend.vercel.app", // futuro domínio do front
+  credentials: true,
+}));
+
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('API Controle de Ponto GPT rodando!');
+// Rota de teste (para verificar deploy)
+app.get("/health", (req, res) => {
+  res.send("OK");
 });
 
+// Suas rotas reais (ex: app.use("/ponto", pontoRoutes); ...)
+
+// Inicia o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
