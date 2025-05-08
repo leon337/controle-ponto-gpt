@@ -17,6 +17,10 @@ app.get("/health", (req, res) => {
   res.send("OK");
 });
 
+app.get("/", (req, res) => {
+    res.send("API Controle de Ponto GPT rodando!");
+  });
+
 // Suas rotas reais (ex: app.use("/ponto", pontoRoutes); ...)
 
 // Inicia o servidor
